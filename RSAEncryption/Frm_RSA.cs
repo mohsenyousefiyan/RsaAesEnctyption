@@ -32,8 +32,8 @@ namespace RSAEncryption
             {
                 try
                 {
-                    AESCryptography Aes = new AESCryptography(Key: Txt_PublicKey.Text);
-                    var Enc = await Aes.EncryptAsync(Txt_PlainText.Text);
+                    AESCryptography Aes = new AESCryptography();
+                    var Enc =  Aes.EncryptAsync(Txt_PublicKey.Text,Txt_PlainText.Text);
                     Txt_CipherText.Text = Enc;
                 }
                 catch (Exception ex)
@@ -64,8 +64,8 @@ namespace RSAEncryption
             {
                 try
                 {
-                    AESCryptography Aes = new AESCryptography(Key: Txt_PublicKey.Text);
-                    var Dec = await Aes.DecryptAsync(Txt_CipherText.Text);
+                    AESCryptography Aes = new AESCryptography();
+                    var Dec =  Aes.DecryptAsync(Txt_PublicKey.Text ,Txt_CipherText.Text);
                     Txt_PlainText.Text = Dec;
                 }
                 catch(Exception ex)

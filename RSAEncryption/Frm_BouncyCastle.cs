@@ -48,7 +48,7 @@ namespace RSAEncryption
 
         }
 
-        private async void Btn_Encrypt_Click(object sender, EventArgs e)
+        private  void Btn_Encrypt_Click(object sender, EventArgs e)
         {
             if(Rdb_RsaEncrypt.Checked)
                 Txt_CipherText.Text = encrypt1(Txt_PlainText.Text,Txt_PublicKey.Text);
@@ -56,8 +56,8 @@ namespace RSAEncryption
             {
                 try
                 {
-                    AESCryptography Aes = new AESCryptography(Key: Txt_PublicKey.Text);
-                    var Enc = await Aes.EncryptAsync(Txt_PlainText.Text);
+                    AESCryptography Aes = new AESCryptography();
+                    var Enc =  Aes.EncryptAsync(Txt_PublicKey.Text ,Txt_PlainText.Text);
                     Txt_CipherText.Text = Enc;
                 }
                 catch (Exception ex)
@@ -67,7 +67,7 @@ namespace RSAEncryption
             }
         }
 
-        private async void Btn_Decrypt_Click(object sender, EventArgs e)
+        private  void Btn_Decrypt_Click(object sender, EventArgs e)
         {
             if (Rdb_RsaEncrypt.Checked)
                 Txt_PlainText.Text = decrypt1(Txt_CipherText.Text, Txt_PrivateKey.Text);
@@ -75,8 +75,8 @@ namespace RSAEncryption
             {
                 try
                 {
-                    AESCryptography Aes = new AESCryptography(Key: Txt_PublicKey.Text);
-                    var Dec = await Aes.DecryptAsync(Txt_CipherText.Text);
+                    AESCryptography Aes = new AESCryptography();
+                    var Dec =  Aes.DecryptAsync(Txt_PublicKey.Text ,Txt_CipherText.Text);
                     Txt_PlainText.Text = Dec;
                 }
                 catch (Exception ex)
@@ -242,8 +242,8 @@ namespace RSAEncryption
             PemReader pr = new PemReader(reader);
             RsaKeyParameters keys = (RsaKeyParameters)pr.ReadObject();
 
-            //Pkcs1Encoding eng = new Pkcs1Encoding(new RsaEngine());
-             OaepEncoding eng = new OaepEncoding(new RsaEngine());
+            Pkcs1Encoding eng = new Pkcs1Encoding(new RsaEngine());
+            // OaepEncoding eng = new OaepEncoding(new RsaEngine());
             eng.Init(true, keys);
 
             int length = plainTextBytes.Length;
@@ -270,9 +270,9 @@ namespace RSAEncryption
             AsymmetricCipherKeyPair keys = (AsymmetricCipherKeyPair)pr.ReadObject();
 
 
-            //Pkcs1Encoding eng = new Pkcs1Encoding(new RsaEngine());
+            Pkcs1Encoding eng = new Pkcs1Encoding(new RsaEngine());
 
-            OaepEncoding eng = new OaepEncoding(new RsaEngine());
+            //OaepEncoding eng = new OaepEncoding(new RsaEngine());
             eng.Init(false, keys.Private);
 
             int length = cipherTextBytes.Length;
@@ -309,6 +309,11 @@ namespace RSAEncryption
         private void Rdb_AesEncrypt_CheckedChanged(object sender, EventArgs e)
         {
             Btn_GenerateKeys.PerformClick();
+        }
+
+        private void Btn_GetBase64_Click(object sender, EventArgs e)
+        {
+            Txt_PublicKey.Text = StringHelper.GetBase64(Txt_PublicKey.Text);
         }
     }
 

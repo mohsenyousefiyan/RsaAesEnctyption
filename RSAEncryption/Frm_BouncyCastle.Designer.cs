@@ -41,6 +41,7 @@
             this.lbl_PublicKey = new System.Windows.Forms.Label();
             this.Rdb_AesEncrypt = new System.Windows.Forms.RadioButton();
             this.Rdb_RsaEncrypt = new System.Windows.Forms.RadioButton();
+            this.Btn_GetBase64 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_GenerateKeys
@@ -176,11 +177,22 @@
             this.Rdb_RsaEncrypt.UseVisualStyleBackColor = true;
             this.Rdb_RsaEncrypt.CheckedChanged += new System.EventHandler(this.Rdb_RsaEncrypt_CheckedChanged);
             // 
+            // Btn_GetBase64
+            // 
+            this.Btn_GetBase64.Location = new System.Drawing.Point(219, 79);
+            this.Btn_GetBase64.Name = "Btn_GetBase64";
+            this.Btn_GetBase64.Size = new System.Drawing.Size(75, 23);
+            this.Btn_GetBase64.TabIndex = 22;
+            this.Btn_GetBase64.Text = "Base64";
+            this.Btn_GetBase64.UseVisualStyleBackColor = true;
+            this.Btn_GetBase64.Click += new System.EventHandler(this.Btn_GetBase64_Click);
+            // 
             // Frm_BouncyCastle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 419);
+            this.Controls.Add(this.Btn_GetBase64);
             this.Controls.Add(this.Rdb_AesEncrypt);
             this.Controls.Add(this.Rdb_RsaEncrypt);
             this.Controls.Add(this.Txt_CipherText);
@@ -215,5 +227,6 @@
         private System.Windows.Forms.Label lbl_PublicKey;
         private System.Windows.Forms.RadioButton Rdb_AesEncrypt;
         private System.Windows.Forms.RadioButton Rdb_RsaEncrypt;
+        private System.Windows.Forms.Button Btn_GetBase64;
     }
 }
