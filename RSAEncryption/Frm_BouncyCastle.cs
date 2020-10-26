@@ -40,9 +40,14 @@ namespace RSAEncryption
                 Txt_PublicKey.Text = GetStringKey(keyPair, false);
                 Txt_PrivateKey.Text = GetStringKey(keyPair, true);
             }
-            else
+            else if(Rdb_AesECBEncrypt.Checked)
             {
-                Txt_PublicKey.Text = GenerateAesKey();
+                Txt_PublicKey.Text = GenerateAesKey(true);
+                Txt_PrivateKey.Clear();
+            }
+            else if (Rdb_AesCBCEncrypt.Checked)
+            {
+                Txt_PublicKey.Text = GenerateAesKey(false);
                 Txt_PrivateKey.Clear();
             }
 
@@ -52,12 +57,25 @@ namespace RSAEncryption
         {
             if(Rdb_RsaEncrypt.Checked)
                 Txt_CipherText.Text = encrypt1(Txt_PlainText.Text,Txt_PublicKey.Text);
-            else
+            else if(Rdb_AesECBEncrypt.Checked)
             {
                 try
                 {
                     AESCryptography Aes = new AESCryptography();
                     var Enc =  Aes.EncryptAsync(Txt_PublicKey.Text ,Txt_PlainText.Text);
+                    Txt_CipherText.Text = Enc;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.GetErrorMessage());
+                }
+            }
+            else if(Rdb_AesCBCEncrypt.Checked)
+            {
+                try
+                {
+                    AESCBCModeCryptography Aes = new AESCBCModeCryptography();
+                    var Enc = Aes.Encrypt(Txt_PublicKey.Text, Txt_PlainText.Text);
                     Txt_CipherText.Text = Enc;
                 }
                 catch (Exception ex)
@@ -71,12 +89,25 @@ namespace RSAEncryption
         {
             if (Rdb_RsaEncrypt.Checked)
                 Txt_PlainText.Text = decrypt1(Txt_CipherText.Text, Txt_PrivateKey.Text);
-            else
+            else if(Rdb_AesECBEncrypt.Checked)
             {
                 try
                 {
                     AESCryptography Aes = new AESCryptography();
                     var Dec =  Aes.DecryptAsync(Txt_PublicKey.Text ,Txt_CipherText.Text);
+                    Txt_PlainText.Text = Dec;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.GetErrorMessage());
+                }
+            }
+            else if (Rdb_AesCBCEncrypt.Checked)
+            {
+                try
+                {
+                    AESCBCModeCryptography Aes = new AESCBCModeCryptography();
+                    var Dec = Aes.Decrypt(Txt_PublicKey.Text, Txt_CipherText.Text);
                     Txt_PlainText.Text = Dec;
                 }
                 catch (Exception ex)
@@ -289,16 +320,19 @@ namespace RSAEncryption
             }
             return StringHelper.ByteArrayToString(plainTextBytes.ToArray());
         }
-              
-       private string GenerateAesKey()
+
+        private string GenerateAesKey(bool isEcb)
         {
-            Random Rnd = new Random();
-            var RndInt = Rnd.Next(10000, 150000000);
-            var datestring = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + ":" + DateTime.Now.Millisecond.ToString() + " " + RndInt.ToString() + " " + DateTime.Now.Date.ToString();
-            var result = StringHelper.GetBase64(datestring);
-            if (result.Length > 32)
-                result = result.Substring(0, 32);
-            return result;
+            if(isEcb)
+            {
+                AESCryptography aESCryptography = new AESCryptography();
+                return aESCryptography.GenerateKey();
+            }
+            else
+            {
+                AESCBCModeCryptography aESCBCMode = new AESCBCModeCryptography();
+                return aESCBCMode.GenerateKey();
+            }
         }
 
         private void Rdb_RsaEncrypt_CheckedChanged(object sender, EventArgs e)
@@ -314,6 +348,16 @@ namespace RSAEncryption
         private void Btn_GetBase64_Click(object sender, EventArgs e)
         {
             Txt_PublicKey.Text = StringHelper.GetBase64(Txt_PublicKey.Text);
+        }
+
+        private void Rdb_AesCCBEncrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            Btn_GenerateKeys.PerformClick();
+        }
+
+        private void Frm_BouncyCastle_Load(object sender, EventArgs e)
+        {
+            Btn_GenerateKeys.PerformClick();
         }
     }
 

@@ -39,9 +39,10 @@
             this.lbl_PrivateKey = new System.Windows.Forms.Label();
             this.Txt_PublicKey = new System.Windows.Forms.TextBox();
             this.lbl_PublicKey = new System.Windows.Forms.Label();
-            this.Rdb_AesEncrypt = new System.Windows.Forms.RadioButton();
+            this.Rdb_AesECBEncrypt = new System.Windows.Forms.RadioButton();
             this.Rdb_RsaEncrypt = new System.Windows.Forms.RadioButton();
             this.Btn_GetBase64 = new System.Windows.Forms.Button();
+            this.Rdb_AesCBCEncrypt = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // Btn_GenerateKeys
@@ -76,8 +77,9 @@
             // 
             // Txt_CipherText
             // 
+            this.Txt_CipherText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_CipherText.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Txt_CipherText.Location = new System.Drawing.Point(219, 294);
+            this.Txt_CipherText.Location = new System.Drawing.Point(238, 294);
             this.Txt_CipherText.Multiline = true;
             this.Txt_CipherText.Name = "Txt_CipherText";
             this.Txt_CipherText.Size = new System.Drawing.Size(339, 57);
@@ -85,9 +87,10 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(121, 311);
+            this.label2.Location = new System.Drawing.Point(140, 311);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 19);
             this.label2.TabIndex = 18;
@@ -95,8 +98,9 @@
             // 
             // Txt_PlainText
             // 
+            this.Txt_PlainText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_PlainText.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Txt_PlainText.Location = new System.Drawing.Point(219, 212);
+            this.Txt_PlainText.Location = new System.Drawing.Point(238, 212);
             this.Txt_PlainText.Multiline = true;
             this.Txt_PlainText.Name = "Txt_PlainText";
             this.Txt_PlainText.Size = new System.Drawing.Size(339, 57);
@@ -104,9 +108,10 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(128, 229);
+            this.label1.Location = new System.Drawing.Point(147, 229);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 19);
             this.label1.TabIndex = 16;
@@ -114,8 +119,9 @@
             // 
             // Txt_PrivateKey
             // 
+            this.Txt_PrivateKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_PrivateKey.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Txt_PrivateKey.Location = new System.Drawing.Point(219, 115);
+            this.Txt_PrivateKey.Location = new System.Drawing.Point(238, 115);
             this.Txt_PrivateKey.Multiline = true;
             this.Txt_PrivateKey.Name = "Txt_PrivateKey";
             this.Txt_PrivateKey.Size = new System.Drawing.Size(339, 61);
@@ -123,9 +129,10 @@
             // 
             // lbl_PrivateKey
             // 
+            this.lbl_PrivateKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_PrivateKey.AutoSize = true;
             this.lbl_PrivateKey.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lbl_PrivateKey.Location = new System.Drawing.Point(128, 133);
+            this.lbl_PrivateKey.Location = new System.Drawing.Point(147, 133);
             this.lbl_PrivateKey.Name = "lbl_PrivateKey";
             this.lbl_PrivateKey.Size = new System.Drawing.Size(89, 19);
             this.lbl_PrivateKey.TabIndex = 14;
@@ -133,8 +140,9 @@
             // 
             // Txt_PublicKey
             // 
+            this.Txt_PublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_PublicKey.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Txt_PublicKey.Location = new System.Drawing.Point(219, 16);
+            this.Txt_PublicKey.Location = new System.Drawing.Point(238, 16);
             this.Txt_PublicKey.Multiline = true;
             this.Txt_PublicKey.Name = "Txt_PublicKey";
             this.Txt_PublicKey.Size = new System.Drawing.Size(339, 57);
@@ -142,26 +150,27 @@
             // 
             // lbl_PublicKey
             // 
+            this.lbl_PublicKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_PublicKey.AutoSize = true;
             this.lbl_PublicKey.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lbl_PublicKey.Location = new System.Drawing.Point(135, 32);
+            this.lbl_PublicKey.Location = new System.Drawing.Point(154, 32);
             this.lbl_PublicKey.Name = "lbl_PublicKey";
             this.lbl_PublicKey.Size = new System.Drawing.Size(81, 19);
             this.lbl_PublicKey.TabIndex = 12;
             this.lbl_PublicKey.Text = "Public Key";
             // 
-            // Rdb_AesEncrypt
+            // Rdb_AesECBEncrypt
             // 
-            this.Rdb_AesEncrypt.AutoSize = true;
-            this.Rdb_AesEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Rdb_AesEncrypt.Location = new System.Drawing.Point(65, 113);
-            this.Rdb_AesEncrypt.Name = "Rdb_AesEncrypt";
-            this.Rdb_AesEncrypt.Size = new System.Drawing.Size(46, 17);
-            this.Rdb_AesEncrypt.TabIndex = 21;
-            this.Rdb_AesEncrypt.TabStop = true;
-            this.Rdb_AesEncrypt.Text = "AES";
-            this.Rdb_AesEncrypt.UseVisualStyleBackColor = true;
-            this.Rdb_AesEncrypt.CheckedChanged += new System.EventHandler(this.Rdb_AesEncrypt_CheckedChanged);
+            this.Rdb_AesECBEncrypt.AutoSize = true;
+            this.Rdb_AesECBEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Rdb_AesECBEncrypt.Location = new System.Drawing.Point(65, 113);
+            this.Rdb_AesECBEncrypt.Name = "Rdb_AesECBEncrypt";
+            this.Rdb_AesECBEncrypt.Size = new System.Drawing.Size(73, 17);
+            this.Rdb_AesECBEncrypt.TabIndex = 21;
+            this.Rdb_AesECBEncrypt.TabStop = true;
+            this.Rdb_AesECBEncrypt.Text = "AES_ECB";
+            this.Rdb_AesECBEncrypt.UseVisualStyleBackColor = true;
+            this.Rdb_AesECBEncrypt.CheckedChanged += new System.EventHandler(this.Rdb_AesEncrypt_CheckedChanged);
             // 
             // Rdb_RsaEncrypt
             // 
@@ -179,7 +188,8 @@
             // 
             // Btn_GetBase64
             // 
-            this.Btn_GetBase64.Location = new System.Drawing.Point(219, 79);
+            this.Btn_GetBase64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_GetBase64.Location = new System.Drawing.Point(238, 79);
             this.Btn_GetBase64.Name = "Btn_GetBase64";
             this.Btn_GetBase64.Size = new System.Drawing.Size(75, 23);
             this.Btn_GetBase64.TabIndex = 22;
@@ -187,13 +197,27 @@
             this.Btn_GetBase64.UseVisualStyleBackColor = true;
             this.Btn_GetBase64.Click += new System.EventHandler(this.Btn_GetBase64_Click);
             // 
+            // Rdb_AesCBCEncrypt
+            // 
+            this.Rdb_AesCBCEncrypt.AutoSize = true;
+            this.Rdb_AesCBCEncrypt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Rdb_AesCBCEncrypt.Location = new System.Drawing.Point(12, 136);
+            this.Rdb_AesCBCEncrypt.Name = "Rdb_AesCBCEncrypt";
+            this.Rdb_AesCBCEncrypt.Size = new System.Drawing.Size(73, 17);
+            this.Rdb_AesCBCEncrypt.TabIndex = 23;
+            this.Rdb_AesCBCEncrypt.TabStop = true;
+            this.Rdb_AesCBCEncrypt.Text = "AES_CBC";
+            this.Rdb_AesCBCEncrypt.UseVisualStyleBackColor = true;
+            this.Rdb_AesCBCEncrypt.CheckedChanged += new System.EventHandler(this.Rdb_AesCCBEncrypt_CheckedChanged);
+            // 
             // Frm_BouncyCastle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 419);
+            this.ClientSize = new System.Drawing.Size(589, 419);
+            this.Controls.Add(this.Rdb_AesCBCEncrypt);
             this.Controls.Add(this.Btn_GetBase64);
-            this.Controls.Add(this.Rdb_AesEncrypt);
+            this.Controls.Add(this.Rdb_AesECBEncrypt);
             this.Controls.Add(this.Rdb_RsaEncrypt);
             this.Controls.Add(this.Txt_CipherText);
             this.Controls.Add(this.label2);
@@ -208,6 +232,7 @@
             this.Controls.Add(this.Btn_GenerateKeys);
             this.Name = "Frm_BouncyCastle";
             this.Text = "Frm_BouncyCastle";
+            this.Load += new System.EventHandler(this.Frm_BouncyCastle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,8 +250,9 @@
         private System.Windows.Forms.Label lbl_PrivateKey;
         private System.Windows.Forms.TextBox Txt_PublicKey;
         private System.Windows.Forms.Label lbl_PublicKey;
-        private System.Windows.Forms.RadioButton Rdb_AesEncrypt;
+        private System.Windows.Forms.RadioButton Rdb_AesECBEncrypt;
         private System.Windows.Forms.RadioButton Rdb_RsaEncrypt;
         private System.Windows.Forms.Button Btn_GetBase64;
+        private System.Windows.Forms.RadioButton Rdb_AesCBCEncrypt;
     }
 }
