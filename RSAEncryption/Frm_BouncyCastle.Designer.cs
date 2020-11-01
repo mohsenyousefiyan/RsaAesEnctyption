@@ -43,6 +43,9 @@
             this.Rdb_RsaEncrypt = new System.Windows.Forms.RadioButton();
             this.Btn_GetBase64 = new System.Windows.Forms.Button();
             this.Rdb_AesCBCEncrypt = new System.Windows.Forms.RadioButton();
+            this.Btn_FileEncrypt = new System.Windows.Forms.Button();
+            this.Btn_FileDecrypt = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // Btn_GenerateKeys
@@ -210,11 +213,37 @@
             this.Rdb_AesCBCEncrypt.UseVisualStyleBackColor = true;
             this.Rdb_AesCBCEncrypt.CheckedChanged += new System.EventHandler(this.Rdb_AesCCBEncrypt_CheckedChanged);
             // 
+            // Btn_FileEncrypt
+            // 
+            this.Btn_FileEncrypt.Location = new System.Drawing.Point(12, 195);
+            this.Btn_FileEncrypt.Name = "Btn_FileEncrypt";
+            this.Btn_FileEncrypt.Size = new System.Drawing.Size(106, 23);
+            this.Btn_FileEncrypt.TabIndex = 24;
+            this.Btn_FileEncrypt.Text = "File Encrypt";
+            this.Btn_FileEncrypt.UseVisualStyleBackColor = true;
+            this.Btn_FileEncrypt.Click += new System.EventHandler(this.Btn_FileEncrypt_Click);
+            // 
+            // Btn_FileDecrypt
+            // 
+            this.Btn_FileDecrypt.Location = new System.Drawing.Point(12, 229);
+            this.Btn_FileDecrypt.Name = "Btn_FileDecrypt";
+            this.Btn_FileDecrypt.Size = new System.Drawing.Size(106, 23);
+            this.Btn_FileDecrypt.TabIndex = 25;
+            this.Btn_FileDecrypt.Text = "File Decrypt";
+            this.Btn_FileDecrypt.UseVisualStyleBackColor = true;
+            this.Btn_FileDecrypt.Click += new System.EventHandler(this.Btn_FileDecrypt_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Frm_BouncyCastle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 419);
+            this.Controls.Add(this.Btn_FileDecrypt);
+            this.Controls.Add(this.Btn_FileEncrypt);
             this.Controls.Add(this.Rdb_AesCBCEncrypt);
             this.Controls.Add(this.Btn_GetBase64);
             this.Controls.Add(this.Rdb_AesECBEncrypt);
@@ -254,5 +283,8 @@
         private System.Windows.Forms.RadioButton Rdb_RsaEncrypt;
         private System.Windows.Forms.Button Btn_GetBase64;
         private System.Windows.Forms.RadioButton Rdb_AesCBCEncrypt;
+        private System.Windows.Forms.Button Btn_FileEncrypt;
+        private System.Windows.Forms.Button Btn_FileDecrypt;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

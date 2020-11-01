@@ -359,6 +359,30 @@ namespace RSAEncryption
         {
             Btn_GenerateKeys.PerformClick();
         }
+
+        private void Btn_FileEncrypt_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                AESFileCryptographyService aESFileCryptography = new AESFileCryptographyService();
+                var fileContent = File.ReadAllBytes(openFileDialog1.FileName);
+                var encryptedContent=aESFileCryptography.EncryptFile(fileContent, Txt_PublicKey.Text);
+                File.WriteAllBytes(openFileDialog1.FileName, encryptedContent);
+                MessageBox.Show("OK");
+            }
+        }
+
+        private void Btn_FileDecrypt_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                AESFileCryptographyService aESFileCryptography = new AESFileCryptographyService();
+                var fileContent = File.ReadAllBytes(openFileDialog1.FileName);
+                var decryptedContent = aESFileCryptography.DecryptFile(fileContent, Txt_PublicKey.Text);
+                File.WriteAllBytes(openFileDialog1.FileName, decryptedContent);
+                MessageBox.Show("OK");
+            }
+        }
     }
 
 }
